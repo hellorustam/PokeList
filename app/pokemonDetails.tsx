@@ -9,7 +9,7 @@ const PokemonDetails = () => {
 	const navigation = useNavigation()
 	useEffect(() => {
 		navigation.setOptions({
-			title: (params?.name as string) || 'Нужный заголовок',
+			title: (params?.name as string) || 'Pokemon Info',
 		})
 	}, [navigation, params?.name])
 

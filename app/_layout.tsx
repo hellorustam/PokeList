@@ -10,7 +10,7 @@ export default function RootLayout() {
 					// title: 'Pokemon Info',
 					headerBackButtonDisplayMode: 'minimal',
 					presentation: 'formSheet',
-					sheetAllowedDetents: [0.6, 1],
+					sheetAllowedDetents: [0.3, 0.6, 1],
 					sheetGrabberVisible: true,
 					// headerShown: false,
 					sheetCornerRadius: 16,

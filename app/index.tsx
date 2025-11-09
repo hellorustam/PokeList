@@ -5,6 +5,8 @@ import { Image, ScrollView, StyleSheet, Text, View } from 'react-native'
 import colorByType from '@/src/constants/colorByType'
 import Pokemon from '../src/interfaces/pokemonType'
 
+// ---
+
 export default function Index() {
 	const [pokemons, setPokemons] = useState<Pokemon[]>([])
 
@@ -39,6 +41,8 @@ export default function Index() {
 		}
 	}
 
+	// ---
+
 	return (
 		<ScrollView
 			contentContainerStyle={{
@@ -55,7 +59,6 @@ export default function Index() {
 						backgroundColor: colorByType[pokemon.types[0].type.name] + 40,
 						borderRadius: 32,
 						padding: 24,
-						// boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
 					}}
 				>
 					<View>
@@ -64,19 +67,10 @@ export default function Index() {
 								flexDirection: 'row',
 							}}
 						>
-							<Image
-								source={{ uri: pokemon.image }}
-								style={{
-									width: 150,
-									height: 150,
-								}}
-							/>
+							<Image source={{ uri: pokemon.image }} style={styles.imageSize} />
 							<Image
 								source={{ uri: pokemon.imageBack }}
-								style={{
-									width: 150,
-									height: 150,
-								}}
+								style={styles.imageSize}
 							/>
 						</View>
 						<Text style={styles.name}>{pokemon.name}</Text>
@@ -100,5 +94,9 @@ const styles = StyleSheet.create({
 		fontWeight: 'thin',
 		color: '#7e7e7eff',
 		textAlign: 'center',
+	},
+	imageSize: {
+		minWidth: 150,
+		minHeight: 150,
 	},
 })
