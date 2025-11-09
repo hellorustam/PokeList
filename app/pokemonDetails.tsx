@@ -1,36 +1,32 @@
-import { Stack, useLocalSearchParams } from 'expo-router'
+import { useLocalSearchParams, useNavigation } from 'expo-router'
 import { useEffect } from 'react'
 import { ScrollView, Text } from 'react-native'
 
 const PokemonDetails = () => {
 	const params = useLocalSearchParams()
-	console.log(params)
+	// console.log(params)
 
-	useEffect(() => {}, [])
-
-	// async function fetchPokemonByName(name: string) {
-	// 	try {
-	// 	} catch (error) {
-	// 		console.log(error)
-	// 	}
-	// }
+	const navigation = useNavigation()
+	useEffect(() => {
+		navigation.setOptions({
+			title: (params?.name as string) || 'Нужный заголовок',
+		})
+	}, [navigation, params?.name])
 
 	return (
 		<>
-			<Stack.Screen options={{ title: params.name as string }}>
-				<ScrollView
-					contentContainerStyle={{
-						gap: 8,
-						padding: 12,
-					}}
-				>
-					<Text>dfasdf</Text>
-				</ScrollView>
-			</Stack.Screen>
+			{/* <Stack.Screen options={{ title: params.name as string }}> */}
+			<ScrollView
+				contentContainerStyle={{
+					gap: 8,
+					padding: 12,
+				}}
+			>
+				<Text>dfasdf</Text>
+			</ScrollView>
+			{/* </Stack.Screen> */}
 		</>
 	)
 }
-
-// const styles = StyleSheet.create({})
 
 export default PokemonDetails
