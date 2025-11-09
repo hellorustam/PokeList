@@ -2,48 +2,13 @@ import { Link } from 'expo-router'
 import { useEffect, useState } from 'react'
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native'
 
-interface Pokemon {
-	name: string
-	image: string
-	imageBack: string
-	types: PokemonType[]
-}
-
-interface PokemonType {
-	type: {
-		name: string
-		url: string
-	}
-}
-
-const colorByType = {
-	normal: '#A8A77A',
-	fire: '#EE8130',
-	water: '#6390F0',
-	electric: '#F7D02C',
-	grass: '#7AC74C',
-	ice: '#96D9D6',
-	fighting: '#C22E28',
-	poison: '#A33EA1',
-	ground: '#E2BF65',
-	flying: '#A98FF3',
-	psychic: '#F95587',
-	bug: '#A6B91A',
-	rock: '#B6A136',
-	ghost: '#735797',
-	dragon: '#6F35FC',
-	dark: '#705746',
-	steel: '#B7B7CE',
-	fairy: '#D685AD',
-}
+import colorByType from '@/src/constants/colorByType'
+import Pokemon from '../src/interfaces/pokemonType'
 
 export default function Index() {
 	const [pokemons, setPokemons] = useState<Pokemon[]>([])
 
-	console.log(JSON.stringify(pokemons[0], null, 2))
-
 	useEffect(() => {
-		// fetch pokemons
 		fetchPokemons()
 	}, [])
 
@@ -55,7 +20,6 @@ export default function Index() {
 
 			const data = await response.json()
 
-			// Fetch detailed info for each Pokemon in parallel
 			const detailedPokemons = await Promise.all(
 				data.results.map(async (pokemon: any) => {
 					const res = await fetch(pokemon.url)

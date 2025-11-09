@@ -7,7 +7,7 @@ export default function RootLayout() {
 			<Stack.Screen
 				name='pokemonDetails'
 				options={{
-					title: 'Pokemon Info',
+					// title: 'Pokemon Info',
 					headerBackButtonDisplayMode: 'minimal',
 					presentation: 'formSheet',
 					sheetAllowedDetents: [0.6, 1],
