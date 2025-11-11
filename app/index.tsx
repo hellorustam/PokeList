@@ -1,6 +1,7 @@
+import indexStyles from '@/src/styles/indexStyle'
 import { Link } from 'expo-router'
 import { useEffect, useState } from 'react'
-import { Image, ScrollView, StyleSheet, Text, View } from 'react-native'
+import { Image, ScrollView, Text, View } from 'react-native'
 
 import colorByType from '@/src/constants/colorByType'
 import fetchPokemons from '@/src/fetchPokemons'
@@ -43,36 +44,20 @@ export default function Index() {
 								flexDirection: 'row',
 							}}
 						>
-							<Image source={{ uri: pokemon.image }} style={styles.imageSize} />
+							<Image
+								source={{ uri: pokemon.image }}
+								style={indexStyles.imageSize}
+							/>
 							<Image
 								source={{ uri: pokemon.imageBack }}
-								style={styles.imageSize}
+								style={indexStyles.imageSize}
 							/>
 						</View>
-						<Text style={styles.name}>{pokemon.name}</Text>
-						<Text style={styles.type}>{pokemon.types[0].type.name}</Text>
+						<Text style={indexStyles.name}>{pokemon.name}</Text>
+						<Text style={indexStyles.type}>{pokemon.types[0].type.name}</Text>
 					</View>
 				</Link>
 			))}
 		</ScrollView>
 	)
 }
-
-const styles = StyleSheet.create({
-	name: {
-		fontSize: 20,
-		fontWeight: 'bold',
-		color: '#272727ff',
-		textAlign: 'center',
-	},
-	type: {
-		fontSize: 18,
-		fontWeight: 'thin',
-		color: '#7e7e7eff',
-		textAlign: 'center',
-	},
-	imageSize: {
-		minWidth: 150,
-		minHeight: 150,
-	},
-})
