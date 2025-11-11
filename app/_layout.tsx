@@ -13,7 +13,7 @@ export default function RootLayout() {
 					sheetAllowedDetents: [0.3, 0.6, 1],
 					sheetGrabberVisible: true,
 					// headerShown: false,
-					sheetCornerRadius: 16,
+					// sheetCornerRadius: 16,
 				}}
 			/>
 		</Stack>
