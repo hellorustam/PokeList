@@ -13,6 +13,13 @@ export default function Index() {
 		fetchPokemons(setPokemons)
 	}, [])
 
+	function bgColor(pokemon: { types: { type: { name: string } }[] }) {
+		return (
+			colorByType[pokemon.types[0].type.name as keyof typeof colorByType] ||
+			'#EEEEEE'
+		)
+	}
+
 	return (
 		<ScrollView
 			contentContainerStyle={{
@@ -25,8 +32,7 @@ export default function Index() {
 					key={pokemon.name}
 					href={{ pathname: '/pokemonDetails', params: { name: pokemon.name } }}
 					style={{
-						// @ts-ignore
-						backgroundColor: colorByType[pokemon.types[0].type.name] + 40,
+						backgroundColor: bgColor(pokemon) + '40',
 						borderRadius: 32,
 						padding: 24,
 					}}
