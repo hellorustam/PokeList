@@ -4,7 +4,6 @@ import { ScrollView, Text } from 'react-native'
 
 const PokemonDetails = () => {
 	const params = useLocalSearchParams()
-	// console.log(params)
 
 	const navigation = useNavigation()
 	useEffect(() => {
@@ -15,7 +14,6 @@ const PokemonDetails = () => {
 
 	return (
 		<>
-			{/* <Stack.Screen options={{ title: params.name as string }}> */}
 			<ScrollView
 				contentContainerStyle={{
 					gap: 8,
@@ -24,7 +22,6 @@ const PokemonDetails = () => {
 			>
 				<Text>dfasdf</Text>
 			</ScrollView>
-			{/* </Stack.Screen> */}
 		</>
 	)
 }

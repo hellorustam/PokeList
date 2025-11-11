@@ -3,45 +3,15 @@ import { useEffect, useState } from 'react'
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native'
 
 import colorByType from '@/src/constants/colorByType'
+import fetchPokemons from '@/src/fetchPokemons'
 import Pokemon from '../src/interfaces/pokemonType'
-
-// ---
 
 export default function Index() {
 	const [pokemons, setPokemons] = useState<Pokemon[]>([])
 
 	useEffect(() => {
-		fetchPokemons()
+		fetchPokemons(setPokemons)
 	}, [])
-
-	async function fetchPokemons() {
-		try {
-			const response = await fetch(
-				'https://pokeapi.co/api/v2/pokemon/?limit=15'
-			)
-
-			const data = await response.json()
-
-			const detailedPokemons = await Promise.all(
-				data.results.map(async (pokemon: any) => {
-					const res = await fetch(pokemon.url)
-					const details = await res.json()
-					return {
-						name: pokemon.name,
-						image: details.sprites.front_default,
-						imageBack: details.sprites.back_default,
-						types: details.types,
-					}
-				})
-			)
-
-			setPokemons(detailedPokemons)
-		} catch (error) {
-			console.log(error)
-		}
-	}
-
-	// ---
 
 	return (
 		<ScrollView
