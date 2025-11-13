@@ -1,13 +1,13 @@
 import indexStyles from '@/src/styles/indexStyle'
 import { Link } from 'expo-router'
-import { useEffect, useState } from 'react'
-import { Image, ScrollView, Text, View } from 'react-native'
+import { memo, useEffect, useState } from 'react'
+import { FlatList, Image, Text, View } from 'react-native'
 
 import colorByType from '@/src/constants/colorByType'
 import fetchPokemons from '@/src/fetchPokemons'
 import Pokemon from '../src/interfaces/pokemonType'
 
-export default function Index() {
+const Index = memo(function Index() {
 	const [pokemons, setPokemons] = useState<Pokemon[]>([])
 
 	useEffect(() => {
@@ -22,34 +22,29 @@ export default function Index() {
 	}
 
 	return (
-		<ScrollView
+		<FlatList
+			data={pokemons}
+			numColumns={2}
+			columnWrapperStyle={{ gap: 8 }}
 			contentContainerStyle={{
 				gap: 8,
 				padding: 12,
 			}}
-		>
-			{pokemons.map(pokemon => (
+			renderItem={({ item: pokemon }) => (
 				<Link
-					key={pokemon.name}
 					href={{ pathname: '/pokemonDetails', params: { name: pokemon.name } }}
 					style={{
 						backgroundColor: bgColor(pokemon) + '40',
 						borderRadius: 32,
-						padding: 24,
+						flex: 1,
+						flexDirection: 'column',
+						padding: 16,
 					}}
 				>
-					<View>
-						<View
-							style={{
-								flexDirection: 'row',
-							}}
-						>
+					<View style={{ alignItems: 'center', justifyContent: 'center' }}>
+						<View style={{ flexDirection: 'row' }}>
 							<Image
 								source={{ uri: pokemon.image }}
-								style={indexStyles.imageSize}
-							/>
-							<Image
-								source={{ uri: pokemon.imageBack }}
 								style={indexStyles.imageSize}
 							/>
 						</View>
@@ -57,7 +52,10 @@ export default function Index() {
 						<Text style={indexStyles.type}>{pokemon.types[0].type.name}</Text>
 					</View>
 				</Link>
-			))}
-		</ScrollView>
+			)}
+			keyExtractor={pokemon => pokemon.name}
+		/>
 	)
-}
+})
+
+export default Index
