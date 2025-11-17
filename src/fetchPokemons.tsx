@@ -2,7 +2,7 @@ export default async function fetchPokemons(
 	setPokemons: (pokemons: any[]) => void
 ) {
 	try {
-		const response = await fetch('https://pokeapi.co/api/v2/pokemon/?limit=15')
+		const response = await fetch('https://pokeapi.co/api/v2/pokemon/?limit=16')
 
 		const data = await response.json()
 

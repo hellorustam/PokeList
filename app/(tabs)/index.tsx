@@ -5,7 +5,7 @@ import { FlatList, Image, Text, View } from 'react-native'
 
 import colorByType from '@/src/constants/colorByType'
 import fetchPokemons from '@/src/fetchPokemons'
-import Pokemon from '../src/interfaces/pokemonType'
+import Pokemon from '../../src/interfaces/pokemonType'
 
 const Index = memo(function Index() {
 	const [pokemons, setPokemons] = useState<Pokemon[]>([])
