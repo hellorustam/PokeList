@@ -5,10 +5,8 @@ export default function TabLayout() {
 	return (
 		<Tabs
 			screenOptions={{
-				tabBarActiveTintColor: '#ffd33d',
-				tabBarStyle: { backgroundColor: '#25292e' },
-				headerStyle: { backgroundColor: '#25292e' },
-				headerTintColor: '#fff',
+				tabBarActiveTintColor: '#ff7445ff',
+				tabBarInactiveTintColor: '#8f94a1ff',
 			}}
 		>
 			<Tabs.Screen
@@ -30,9 +28,7 @@ export default function TabLayout() {
 					title: 'Favorite',
 					tabBarIcon: ({ color, focused }) => (
 						<Ionicons
-							name={
-								focused ? 'information-circle' : 'information-circle-outline'
-							}
+							name={focused ? 'star' : 'star-outline'}
 							color={color}
 							size={24}
 						/>
@@ -45,9 +41,7 @@ export default function TabLayout() {
 					title: 'Profile',
 					tabBarIcon: ({ color, focused }) => (
 						<Ionicons
-							name={
-								focused ? 'information-circle' : 'information-circle-outline'
-							}
+							name={focused ? 'person' : 'person-outline'}
 							color={color}
 							size={24}
 						/>
