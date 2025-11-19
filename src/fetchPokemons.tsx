@@ -10,6 +10,7 @@ export default async function fetchPokemons(
 			data.results.map(async (pokemon: any) => {
 				const res = await fetch(pokemon.url)
 				const details = await res.json()
+
 				return {
 					name: pokemon.name,
 					image: details.sprites.front_default,
@@ -22,5 +23,6 @@ export default async function fetchPokemons(
 		setPokemons(detailedPokemons)
 	} catch (error) {
 		console.log(error)
+		console.log(333)
 	}
 }
