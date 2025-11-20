@@ -32,7 +32,14 @@ const Index = memo(function Index() {
 			}}
 			renderItem={({ item: pokemon }) => (
 				<Link
-					href={{ pathname: '/pokemonDetails', params: { name: pokemon.name } }}
+					href={{
+						pathname: '/pokemonDetails',
+						params: {
+							name: pokemon.name,
+							image: pokemon.image,
+							imageBack: pokemon.imageBack,
+						},
+					}}
 					style={{
 						backgroundColor: bgColor(pokemon) + '40',
 						borderRadius: 32,
